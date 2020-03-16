@@ -20,18 +20,23 @@ batch_tag = sys.argv[1]
 
 number_runs = int(sys.argv[2])
 
+# Don't change this
+starting_directory = os.getcwd()
+
 for launchArgs in sys.argv[3:]:
 
-    # Change this to where you want your results to go
-    output_directory = "/home/mlg11/runs/" + launchArgs
+    
 
     for problemArgs in tomsDef:
 
-        output_directory = output_directory + problemArgs + batch_tag
+        # Change this to the root directory where output should be placed
+        output_directory = "/home/mlg11/results/"
 
-        # Don't change these
+        output_directory = output_directory + launchArgs + problemArgs + batch_tag
+
+        # Don't change this
         clojush_directory = output_directory + "/Clojush"
-        starting_directory = os.getcwd()
+        
 
         example_file = "clojush.problems.software."
         example_file = example_file + problemArgs + " :parent-selection :" + launchArgs
